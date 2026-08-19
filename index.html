@@ -5,13 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
     <meta
       name="description"
       content="..."
     />
 
-    
     <title>MTCP</title>
 
     <!---------- GC Design System CSS Shortcuts ---------->
@@ -33,96 +31,153 @@
     ></script>
 
     <!-- Custom styles -->
-    
-    <!-- <link rel="stylesheet" href="path/to/custom.css" /> -->
+    <style>
+      /* page layout: aside + content */
+      .page-wrap {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* aside / side nav width */
+      .page-aside {
+        width: 260px;
+        flex: 0 0 260px;
+      }
+
+      /* keep the side nav visible while scrolling */
+      .page-aside gcds-side-nav {
+        position: sticky;
+        top: 1rem;
+      }
+
+      /* main content area should grow/scroll */
+      .page-content {
+        flex: 1 1 0;
+      }
+
+      /* banner image full width within content area */
+      .banner-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* responsive: stack on small screens */
+      @media (max-width: 840px) {
+        .page-wrap {
+          flex-direction: column;
+          padding: 1rem;
+        }
+        .page-aside {
+          width: 100%;
+          flex: none;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <!---------- Header ---------->
    
     <gcds-header lang-href="#" skip-to-href="#main-content">
-    
+      
       <gcds-search slot="search"></gcds-search>
 
-      
       <gcds-breadcrumbs slot="breadcrumb">
-        
         <gcds-breadcrumbs-item href="#">Link</gcds-breadcrumbs-item>
         <gcds-breadcrumbs-item href="#">Link</gcds-breadcrumbs-item>
       </gcds-breadcrumbs>
     </gcds-header>
 
-    <!---------- Main content ---------->
-    <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
-<section>
-  <figure style="margin:0;">
-    <img
-      class="banner-image"
-      src="https://raw.githubusercontent.com/maubreyGC/Peer-support/main/images/green_coffee_banner.png"
-      alt="">
-  </figure>
-  </section>
-</main>
-    
-    <gcds-container
-      id="main-content"
-      layout="page"
-      tag="main"
-    >
-     
-      <section>
-        <gcds-heading tag="h1">Military Training Cooperation Program (MTCP)</gcds-heading>
-        <gcds-text>
-          About us text...Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
+    <!---------- Main layout: aside (side nav) + content ---------->
+    <main id="main-content" class="page-wrap" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement">
+      <aside class="page-aside" aria-label="Primary">
+        <gcds-side-nav label="GC Design System">
+          <gcds-nav-link href="#" slot="home">GC Design System</gcds-nav-link>
+
+          <!-- mark current page for screen readers/visual: aria-current="page" -->
+          <gcds-nav-link href="#" aria-current="page">Start to use</gcds-nav-link>
+
+          <gcds-nav-group menu-label="Page templates" open-trigger="Expand page templates">
+            <gcds-nav-link href="#">Template A</gcds-nav-link>
+            <gcds-nav-link href="#">Template B</gcds-nav-link>
+          </gcds-nav-group>
+
+          <gcds-nav-link href="#">Components</gcds-nav-link>
+          <gcds-nav-link href="#">CSS shortcuts</gcds-nav-link>
+          <gcds-nav-link href="#">Styles</gcds-nav-link>
+          <gcds-nav-link href="#">Contact</gcds-nav-link>
+        </gcds-side-nav>
+      </aside>
+
+      <section class="page-content">
+        <figure style="margin:0;">
+          <img
+            class="banner-image"
+            src="https://raw.githubusercontent.com/maubreyGC/Peer-support/main/images/green_coffee_banner.png"
+            alt="">
+        </figure>
+
+        <gcds-container layout="page" tag="div">
+          <section>
+            <gcds-heading tag="h1">Military Training Cooperation Program (MTCP)</gcds-heading>
+            <gcds-text>
+              About us text...Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+          </section>
+
+          <section>
+            <gcds-heading tag="h2">"What we do"/"Aims to" section</gcds-heading>
+            <gcds-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+
+            <gcds-heading tag="h2">"How we do it" section</gcds-heading>
+            <gcds-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+
+            <gcds-heading tag="h3">Subsection heading</gcds-heading>
+            <gcds-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+          </section>
+
+          <section>
+            <gcds-heading tag="h2">"Why is work important"</gcds-heading>
+            <gcds-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+          </section>
+
+          <section>
+            <gcds-heading tag="h2">Our history</gcds-heading>
+            <gcds-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
+              egestas maecenas pharetra convallis posuere morbi leo urna.
+            </gcds-text>
+          </section>
+
+          <!-- TODO: Update the date to reflect the page's most recent change. -->
+          <gcds-date-modified>2024-08-22</gcds-date-modified>
+        </gcds-container>
       </section>
-
-      <section>
-        <gcds-heading tag="h2">"What we do"/"Aims to" section</gcds-heading>
-        <gcds-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
-
-        <gcds-heading tag="h2">"How we do it" section</gcds-heading>
-        <gcds-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
-
-        <gcds-heading tag="h3">Subsection heading</gcds-heading>
-        <gcds-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
-      </section>
-
-      <section>
-        <gcds-heading tag="h2">"Why is work important"</gcds-heading>
-        <gcds-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
-      </section>
-
-      <section>
-        <gcds-heading tag="h2">Our history</gcds-heading>
-        <gcds-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Turp is
-          egestas maecenas pharetra convallis posuere morbi leo urna.
-        </gcds-text>
-      </section>
-
-      <!-- TODO: Update the date to reflect the page's most recent change. -->
-      <gcds-date-modified>2024-08-22</gcds-date-modified>
-    </gcds-container>
+    </main>
 
     <!---------- Footer ---------->
    
@@ -132,5 +187,25 @@
       contextual-links='{ "Contact": "#","Features": "#", "News": "#"}'
     >
     </gcds-footer>
+
+    <!-- small script to mark the active link based on current location (multi-page sites) -->
+    <script>
+      (function () {
+        try {
+          const links = document.querySelectorAll('gcds-side-nav gcds-nav-link');
+          const path = window.location.pathname || window.location.href;
+          links.forEach((lnk) => {
+            const href = lnk.getAttribute('href');
+            if (!href || href === '#') return;
+            // simple matching: if href is contained in path, mark as current
+            if (path.indexOf(href) !== -1) {
+              lnk.setAttribute('aria-current', 'page');
+            }
+          });
+        } catch (e) {
+          // no-op
+        }
+      })();
+    </script>
   </body>
 </html>
